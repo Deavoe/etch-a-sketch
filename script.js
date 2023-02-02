@@ -26,9 +26,9 @@ function shadeColor(color, percent) {
 // Chronological Checklist
 // [X] Base webpage
 // [X] Function => Grid Generator
-// [] Button => Prompt -> Regenerate grid
+// [X] Button => Prompt -> Regenerate grid
 // [] Function => Hover Div Coloring (Black)
-// [] Button => Reset all div color
+// [X] Button => Reset all div color
 // [] Button => Toggles bool (Black/RGB)
 // [] Function => Hover Div Coloring (RGB)
 
@@ -39,20 +39,35 @@ slider.oninput = function() {
     output.textContent = this.value;
   }
 
-function genGrid(num) {
+function genGrid() {
+let num = slider.value
 let container = document.querySelector("#container")
 container.replaceChildren(); // clears children
 // grid-template-columns: repeat(16,16fr);
 container.style.setProperty('grid-template-columns', 'repeat('+num+','+num+'fr)');
 for (let i=0;i < (num*num) ;i++ ) {
 let elem = document.createElement("div");
-elem.style.borderRadius = "1px";
-elem.style.backgroundColor = "rgb(255,255,255)";
 elem.style.aspectRatio = "1/1";
+elem.style.outlineStyle = "solid";
+elem.style.outlineColor = "rgb(200,200,200)"
+elem.style.outlineWidth = "1px";
+elem.style.overflow = "hidden";
+elem.style.backgroundColor = "rgb(255,255,255)";
+elem.style.height = "auto";
 elem.classList.add("grd");
 container.appendChild(elem);
 }
-
+console.log("Generated grid.") 
 }
+document.querySelector(".genb").addEventListener("click",genGrid);
 
-genGrid(16)
+function resetGrid() {
+    let nodes = document.getElementById('container').childNodes;
+    for(var i=0; i<nodes.length; i++) {
+    if (nodes[i].nodeName.toLowerCase() == 'div') {
+         nodes[i].style.backgroundColor = "rgb(255,255,255)" ;
+     }
+    }
+    console.log("Reset grid.") 
+}
+document.querySelector(".reset").addEventListener("click",resetGrid);
