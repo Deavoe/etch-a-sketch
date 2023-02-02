@@ -25,7 +25,7 @@ function shadeColor(color, percent) {
 
 // Chronological Checklist
 // [X] Base webpage
-// [] Function => Grid Generator
+// [X] Function => Grid Generator
 // [] Button => Prompt -> Regenerate grid
 // [] Function => Hover Div Coloring (Black)
 // [] Button => Reset all div color
@@ -40,5 +40,19 @@ slider.oninput = function() {
   }
 
 function genGrid(num) {
-// container.replaceChildren(); // clears children
+let container = document.querySelector("#container")
+container.replaceChildren(); // clears children
+// grid-template-columns: repeat(16,16fr);
+container.style.setProperty('grid-template-columns', 'repeat('+num+','+num+'fr)');
+for (let i=0;i < (num*num) ;i++ ) {
+let elem = document.createElement("div");
+elem.style.borderRadius = "1px";
+elem.style.backgroundColor = "rgb(255,255,255)";
+elem.style.aspectRatio = "1/1";
+elem.classList.add("grd");
+container.appendChild(elem);
 }
+
+}
+
+genGrid(16)
