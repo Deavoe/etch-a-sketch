@@ -89,12 +89,17 @@ document.querySelector(".reset").addEventListener("click",resetGrid);
 
 function toggleRGB() {
     rgb = !rgb
+    let rgt = document.querySelector(".toggle")
+    if (rgb === true) {
+        rgt.textContent = "RGB: ON";
+    } else {
+        rgt.textContent = "RGB: OFF";
+    }
     console.log("Toggled RGB. " + rgb) 
 }
 document.querySelector(".toggle").addEventListener("click",toggleRGB);
 
 document.querySelector('.title').classList.remove("hover")
-
+document.querySelector('body').classList.remove("hover2")
 genGrid(false)
 
-document.querySelector('body').classList.remove("hover2")
