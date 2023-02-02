@@ -38,6 +38,7 @@ button {
 
 .reset,
 .toggle {
+    transition: all 0.3s;
     background-color: rgb(191,191,191);
     min-width: 100px;
     min-height: 100px;
@@ -64,19 +65,21 @@ button {
 }
 
 .gen {
-    padding: 12px;
+    padding: 16px;
+    margin-top:12px;
     border: 2px solid rgb(151, 0, 0);
     border-radius: 12px;
     background-color: rgb(197, 27, 44);
     display:flex;
     align-self: center;
     justify-content: center;
-    gap:2vw;
+    gap:1.5vw;
 }
 
 #demo {
     align-self: center;
     justify-self: center;
+    transition: all 0.3s;
     text-align: center;
     font-size: 32px;
     color: rgb(255,255,255);
@@ -84,25 +87,56 @@ button {
 }
 
 .genb {
+    transition: all 0.3s;
     min-width: 100px;
     min-height: 30px;
     padding:10px;
+    margin-right: 10px;
     font-size: 24px;
     background-color: rgb(191,191,191);
     border-radius: 50px;
     outline: none;
-    border: 4px solid rgb(250,250,250);
-    border-bottom-color: rgb(212,212,212);
+    border: 4px solid rgb(233,233,233);
+    /* border-bottom-color: rgb(212,212,212);
     border-left-color: rgb(236,236,236);
     border-right-color: rgb(236,236,236);
-    border-bottom-color: rgb(212,212,212);
+    border-bottom-color: rgb(212,212,212); */
+}
+
+.genb:hover {
+    background-color: rgb(222,222,222);
+    border: 4px solid rgb(255,255,255);
+    scale: 1.03;
+    text-shadow: 1px 1px 2px rgb(0,0,0) ;
+}
+.genb:active {
+    transition: all 0.08s;
+    background-color: rgb(233,233,233);
+    border: 4px solid rgb(255,255,255);
+    scale: 1.14;
+    text-shadow: 6px 6px 6px rgb(0,0,0) ;
+}
+
+.reset:hover,
+.toggle:hover {
+    border-width: 4px;
+}
+.reset:hover {
+    transform: rotate(45deg);
+}
+.toggle:hover {
+    transform: rotate(-45deg);
+}
+.toggle:active,
+.reset:active {
+    transform: rotate(360deg);
 }
 
 .slider {
   align-self: center;
   -webkit-appearance: none;
   width: 125px;
-  height: 15px;
+  height: 10px;
   border: 2px solid rgb(0, 0, 0);
   border-radius: 5px;  
   background: #500000;

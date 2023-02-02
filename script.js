@@ -23,15 +23,16 @@ function shadeColor(color, percent) {
     return "#"+RR+GG+BB;
 } // Darken 10% : shadeColor("#FFFFFF",-10);
 
-// Checklist
-// [] Base webpage
+// Chronological Checklist
+// [X] Base webpage
 // [] Function => Grid Generator
-// [] Function => Hover Div Coloring (Black/RGB)
-// [] Button => Toggles bool (Black/RGB)
-// [] Button => Reset all div color
 // [] Button => Prompt -> Regenerate grid
+// [] Function => Hover Div Coloring (Black)
+// [] Button => Reset all div color
+// [] Button => Toggles bool (Black/RGB)
+// [] Function => Hover Div Coloring (RGB)
 
-let rgb = false
+let rgb = document.getElementById("coloring")
 let slider = document.getElementById("myRange");
 let output = document.getElementById("demo");
 slider.oninput = function() {
