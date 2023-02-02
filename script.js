@@ -27,17 +27,28 @@ function shadeColor(color, percent) {
 // [X] Base webpage
 // [X] Function => Grid Generator
 // [X] Button => Prompt -> Regenerate grid
-// [] Function => Hover Div Coloring (Black)
+// [X] Function => Hover Div Coloring (Black)
 // [X] Button => Reset all div color
-// [] Button => Toggles bool (Black/RGB)
-// [] Function => Hover Div Coloring (RGB)
+// [X] Button => Toggles bool (Black/RGB)
+// [X] Function => Hover Div Coloring (RGB)
+// [] Darken colored squares during RGB mode
 
-let rgb = document.getElementById("coloring")
+let rgb = false //document.getElementById("coloring")
 let slider = document.getElementById("myRange");
 let output = document.getElementById("demo");
 slider.oninput = function() {
     output.textContent = this.value;
   }
+
+function hoverColor(e) {
+    if (rgb === false) {
+        e.target.style.backgroundColor = "rgb(0,0,0)";
+    } else if (e.target.style.backgroundColor === "rgb(255, 255, 255)" ) {
+        e.target.style.backgroundColor = '#' + parseInt(Math.random() * 0xffffff).toString(16)
+    } else {
+        shadeColor(e.target.style.backgroundColor, -10 );
+    }
+}
 
 function genGrid() {
 let num = slider.value
@@ -55,6 +66,7 @@ elem.style.overflow = "hidden";
 elem.style.backgroundColor = "rgb(255,255,255)";
 elem.style.height = "auto";
 elem.classList.add("grd");
+elem.addEventListener("mouseover", hoverColor);
 container.appendChild(elem);
 }
 console.log("Generated grid.") 
@@ -71,3 +83,9 @@ function resetGrid() {
     console.log("Reset grid.") 
 }
 document.querySelector(".reset").addEventListener("click",resetGrid);
+
+function toggleRGB() {
+    rgb = !rgb
+    console.log("Toggled RGB. " + rgb) 
+}
+document.querySelector(".toggle").addEventListener("click",toggleRGB);
